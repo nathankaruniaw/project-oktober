@@ -1,3 +1,7 @@
+DROP database if exists sidji;
+create database sidji;
+use sidji; 
+
 CREATE TABLE page(
     idPage INT PRIMARY KEY AUTO_INCREMENT,
     namaPage VARCHAR(50),
