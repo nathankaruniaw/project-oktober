@@ -16,7 +16,10 @@ class AdminController extends Controller
 
     public function addUser(){
 
-        return view('admin/adduser');
+        $Users=DB::table('users')
+            ->get();
+
+        return view('admin/adduser', compact('Users'));
     }
 
     public function insertNewUser(Request $request){
@@ -30,7 +33,8 @@ class AdminController extends Controller
             ->insert([
                 'name'=> $request->name,
                 'email'=> $request->email,
-                'password'=> $request->password
+                'password'=> $request->password,
+                'role'=> $request->role
             ]);
 
         // $data = $request->all();

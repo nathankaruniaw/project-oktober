@@ -8,67 +8,52 @@
 
     <div class="container-fluid">
 
-        <div class="row">
+        <div class="row" style="background-color: #bc1d2a; border-radius: 10px; padding: 15px; margin-top:20px;">
 
             <div class="col-md-12">
                 <label for="name">Nama</label>
-                <input type="text" name="name" id="name"><br>
+                <input type="text" class="form-control" name="name" id="name"><br>
                 <label for="email">Email</label>
-                <input type="text" name="email" id="email"><br>
+                <input type="text" class="form-control" name="email" id="email"><br>
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password"><br>
+                <input type="password" class="form-control" name="password" id="password"><br>
+                <label for="role">Role</label>
+                <select name="role" class="form-control" id="role">
+                    <option value="OWNER">Owner</option>
+                    <option value="ADMIN">Admin</option>
+                </select><br>
                 <button type="button" onclick="addUser()">SIMPAN</button>
             </div>
 
         </div>
 
-        <table id="example" class="display" style="width:100%">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Shad Decker</td>
-                <td>Regional Director</td>
-                <td>Edinburgh</td>
-                <td>51</td>
-                <td>2008/11/13</td>
-                <td>$183,000</td>
-            </tr>
-            <tr>
-                <td>Michael Bruce</td>
-                <td>Javascript Developer</td>
-                <td>Singapore</td>
-                <td>29</td>
-                <td>2011/06/27</td>
-                <td>$183,000</td>
-            </tr>
-            <tr>
-                <td>Donna Snider</td>
-                <td>Customer Support</td>
-                <td>New York</td>
-                <td>27</td>
-                <td>2011/01/25</td>
-                <td>$112,000</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="row" style="background-color: #13bd32; border-radius: 10px; padding: 15px; margin-top:20px;">
+
+            <table id="example" class="display" style="width:100%;">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach($Users as $User)
+                    <tr>
+                        <td>{{ $User->name }}</td>
+                        <td>{{ $User->role }}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+
+        </div>
 
     </div>
 
 @endsection
 
 @section('javascript')
-    <script src="/js/pages/dashboard.js"></script>
     <script>
-
         $(document).ready(function() {
             $('#example').DataTable();
         } );
@@ -82,10 +67,12 @@
             let name = $('#name').val();
             let email = $('#email').val();
             let password = $('#password').val();
+            let role = $('#role').val();
             console.log(name)
             console.log(email)
             console.log(password)
-            if (name != '' && email != '' && password != ''){
+            console.log(role)
+            if (name != '' && email != '' && password != '' && role != ''){
                 console.log('MASUK IF')
                 $.ajax({
                     type: 'POST',
@@ -93,7 +80,8 @@
                     data: {
                         name: name,
                         email: email,
-                        password: password
+                        password: password,
+                        role: role
                     },
                     success: function(data){
                         console.log(data)
@@ -102,6 +90,7 @@
                             title: 'User Berhasil Ditambahkan!',
                             timer: 900,
                         })
+                        location.reload()
                     },
                     error: function(data){
                         console.log('Error ', data);

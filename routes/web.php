@@ -22,7 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // ADMIN
-Route::prefix('/admin')->group(function(){
+Route::prefix('/admin')->middleware('auth')->group(function(){
 
     Route::get('', 'AdminController@index');
     Route::get('/add-new-user', 'AdminController@addUser');

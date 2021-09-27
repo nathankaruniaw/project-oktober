@@ -160,7 +160,6 @@
 	<!-- /page container -->
 
     @yield('javascript')
-    <script src="/js/pages/AIOfunction.js"></script>
 
 </body>
 </html>
