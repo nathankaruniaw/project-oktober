@@ -25,6 +25,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::prefix('/admin')->middleware('auth')->group(function(){
 
     Route::get('', 'AdminController@index');
-    Route::get('/add-new-user', 'AdminController@addUser');
+    Route::get('/user-management', 'AdminController@userIndex');
     Route::post('/insert-user', 'AdminController@insertNewUser');
 });

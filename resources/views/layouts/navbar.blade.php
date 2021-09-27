@@ -97,17 +97,18 @@
                                     </a>
                                 </li>
 
-                                {{-- Wedding Bouquet --}}
+                                {{-- Page --}}
                                 <li>
-									<a href="#"><i class="icon-crown"></i> <span>Wedding Bouqet</span></a>
+									<a href="#"><i class="icon-crown"></i> <span>Page Controller</span></a>
 									<ul>
-										<li><a href="/admin/wedding-bouqet"><i class="icon-crown"></i>Wedding Bouqet</a></li>
+										<li><a href="#"><i class="icon-crown"></i>Page</a></li>
+										<li><a href="#"><i class="icon-crown"></i>Section</a></li>
 									</ul>
 								</li>
 
-								{{-- Add New User --}}
+								{{-- Users Management --}}
                                 <li>
-									<a href="/admin/add-new-user"><i class="icon-crown"></i> <span>Add New User</span></a>
+									<a href="/admin/user-management"><i class="icon-crown"></i> <span>Users Management</span></a>
 								</li>
 
 							</ul>

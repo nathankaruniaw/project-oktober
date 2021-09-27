@@ -14,12 +14,12 @@ class AdminController extends Controller
         return view('admin/dashboard');
     }
 
-    public function addUser(){
+    public function userIndex(){
 
         $Users=DB::table('users')
             ->get();
 
-        return view('admin/adduser', compact('Users'));
+        return view('admin/users/index', compact('Users'));
     }
 
     public function insertNewUser(Request $request){

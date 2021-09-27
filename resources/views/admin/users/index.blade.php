@@ -8,7 +8,7 @@
 
     <div class="container-fluid">
 
-        <div class="row" style="background-color: #bc1d2a; border-radius: 10px; padding: 15px; margin-top:20px;">
+        <div class="row" style="background-color: #ffe291; border-radius: 10px; padding: 15px; margin-top:20px;">
 
             <div class="col-md-12">
                 <label for="name">Nama</label>
@@ -27,13 +27,14 @@
 
         </div>
 
-        <div class="row" style="background-color: #13bd32; border-radius: 10px; padding: 15px; margin-top:20px;">
+        <div class="row" style="background-color: #b7b0ff; border-radius: 10px; padding: 15px; margin-top:20px;">
 
             <table id="example" class="display" style="width:100%;">
                 <thead>
                     <tr>
                         <th>Name</th>
                         <th>Role</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,6 +42,10 @@
                     <tr>
                         <td>{{ $User->name }}</td>
                         <td>{{ $User->role }}</td>
+                        <td>
+                            <button class="btn btn-danger" style="margin: 5px;" onclick="deleteAccount()">Delete!</button>
+                            <button class="btn btn-success" style="margin: 5px;" onclick="editAccount()">Edit!</button>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>
