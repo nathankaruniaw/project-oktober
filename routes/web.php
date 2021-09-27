@@ -20,3 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// ADMIN
+Route::prefix('/admin')->group(function(){
+
+    Route::get('', 'AdminController@index');
+    Route::get('/add-new-user', 'AdminController@addUser');
+    Route::post('/insert-user', 'AdminController@insertNewUser');
+});
