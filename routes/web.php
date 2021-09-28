@@ -27,4 +27,8 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
     Route::get('', 'AdminController@index');
     Route::get('/user-management', 'AdminController@userIndex');
     Route::post('/insert-user', 'AdminController@insertNewUser');
+
+    Route::prefix('/halaman')->group(function(){
+        Route::get('', 'PageController@index')->name('page');
+    });
 });
