@@ -30,5 +30,8 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
 
     Route::prefix('/halaman')->group(function(){
         Route::get('', 'PageController@index')->name('page');
+        Route::get('/get-data', 'PageController@pageGetData')->name('pageGetData');
+        Route::get('/hapus-data/{id}', 'PageController@pageDeleteData')->name('pageDeleteData');
+        Route::get('/edit-data/{id}', 'PageController@pageEditData')->name('pageEditData');
     });
 });

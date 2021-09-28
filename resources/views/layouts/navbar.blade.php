@@ -142,6 +142,8 @@
     </div>
     <!-- /page container -->
 
+    @yield('modal')
+
     @yield('javascript')
 
 </body>
