@@ -62,7 +62,7 @@
 
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
-                      </button>
+                    </button>
                 </div>
 
                 <div class="modal-body">
@@ -72,25 +72,62 @@
 
                     <div class="container-fluid">
 
+                        {{-- Page --}}
                         <div class="row">
 
+                            <div class="col-lg-5">
+
+                                <label>Page's Name : </label>
+
+                                <input type="text" id="namaPage" class="form-control namaPage" data-id=""
+                                    placeholder="Page's name" value="" data-kolom="namaPage">
+
+                            </div>
+
+                            <div class="col-lg-5">
+
+                                <label>Page's Status : </label>
+
+                                <select id="statusPage" class="form-control statusPage" data-id="" data-kolom="statusPage">
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        {{-- SubPage --}}
+                        <div class="row">
+
+                            <hr>
+                            <h5>Sub Page :</h5>
+
+                            {{-- Add Sub Page --}}
                             <div class="col-lg-12">
-
                                 <div class="row">
-                                    <div class="col-md-3">
-                                        <label>Page's Name : </label>
+                                    <div class="col-lg-4">
+                                        <input type="text" class="form-control"
+                                            placeholder="Sub page's name" id="subPageNama">
                                     </div>
+                                    <div class="col-lg-3">
+                                        <select class="form-control" id="subPageStatus">
 
-                                    <div class="col-md-6">
-                                        <input type="text" name="namaPage" id="namaPage" class="form-control" placeholder="Page's name">
+                                            <option value="Online" selected>Online</option>
+                                            <option value="Offline">Offline</option>
+                                        </select>
                                     </div>
-
-                                    <div class="col-md-3 text-right">
-                                        <button class="btn btn-primary" id="pageButton" type="button">
-                                            Save Changes
+                                    <div class="col-lg-3">
+                                        <button class="btn btn-tambah" id="subPageAddButton">
+                                            Add
                                         </button>
                                     </div>
                                 </div>
+                            </div>
+
+                            <br>
+
+                            {{-- Sub Page --}}
+                            <div class="col-lg-12" id="containerSubPage">
 
                             </div>
 
@@ -122,39 +159,28 @@
 
                         <div class="row">
 
-                            <div class="col-lg-12">
+                            <div class="col-md-3">
+                                <label>Page's Name : </label>
+                            </div>
 
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label>Page's Name : </label>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <input type="text" name="addNamaPage" id="addNamaPage" class="form-control" placeholder="Page's name">
-                                    </div>
-                                </div>
-
+                            <div class="col-md-6">
+                                <input type="text" name="addNamaPage" id="addNamaPage" class="form-control"
+                                    placeholder="Page's name">
                             </div>
 
                         </div>
 
                         <div class="row">
 
-                            <div class="col-lg-12">
+                            <div class="col-md-3">
+                                <label>Page's Status : </label>
+                            </div>
 
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label>Page's Status : </label>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <select class="form-control" name="addStatusPage" id="addStatusPage">
-                                            <option value="Online" selected> Online</option>
-                                            <option value="Offline"> Offline</option>
-                                        </select>
-                                    </div>
-                                </div>
-
+                            <div class="col-md-6">
+                                <select class="form-control" name="addStatusPage" id="addStatusPage">
+                                    <option value="Online" selected> Online</option>
+                                    <option value="Offline"> Offline</option>
+                                </select>
                             </div>
 
                         </div>

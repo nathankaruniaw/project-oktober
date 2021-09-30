@@ -34,5 +34,10 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
         Route::post('/add-data', 'PageController@pageAddData')->name('pageAddData');
         Route::get('/hapus-data/{id}', 'PageController@pageDeleteData')->name('pageDeleteData');
         Route::post('/edit-data', 'PageController@pageEditData')->name('pageEditData');
+        Route::post('/update', 'PageController@pageUpdateData')->name('pageUpdateData');
+        Route::post('/insert-subPage', 'PageController@pageInsertSubPage')->name('pageInsertSubPage');
+        Route::post('/delete-subPage', 'PageController@pageDeleteSubPage')->name('pageDeleteSubPage');
     });
+
+
 });

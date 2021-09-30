@@ -25,7 +25,7 @@ class PageController extends Controller
                 return view('admin._action', [
                     'model' => $data,
                     'delete' => route('pageDeleteData',$data->idPage),
-                    'edit' => route('pageEditData',$data->idPage),
+                    'edit' => $data->idPage,
                 ]);
             })
             ->make(true);
@@ -51,7 +51,14 @@ class PageController extends Controller
             ->where('idPage', $request->idPage)
             ->first();
 
-        return view('admin.pages.detail');
+        $subPage = DB::table('page')
+            ->where('idSubPage', $request->idPage)
+            ->where('idPage', '<>', $request->idPage)
+            ->get();
+
+        $data = [$page, $subPage];
+
+        return response()->json($data);
     }
 
     public function pageDeleteData($id){
@@ -59,5 +66,45 @@ class PageController extends Controller
         DB::table('page')
             ->where('idSubPage', $id)
             ->delete();
+    }
+
+    public function pageUpdateData(Request $request){
+
+        DB::table('page')
+            ->where('idPage', $request->idPage)
+            ->update([
+                $request->kolom => $request->value
+            ]);
+    }
+
+    public function pageInsertSubPage(Request $request){
+
+        DB::table('page')
+            ->insert([
+                'namaPage' => $request->namaPage,
+                'statusPage' => $request->statusPage,
+                'idSubPage' => $request->idPage
+            ]);
+
+        $subPage = DB::table('page')
+            ->where('idSubPage', $request->idPage)
+            ->where('idPage', '<>', $request->idPage)
+            ->get();
+
+        return response()->json($subPage);
+    }
+
+    public function pageDeleteSubPage(Request $request){
+
+        DB::table('page')
+            ->where('idPage', $request->id)
+            ->delete();
+
+        $subPage = DB::table('page')
+            ->where('idSubPage', $request->idPage)
+            ->where('idPage', '<>', $request->idPage)
+            ->get();
+
+        return response()->json($subPage);
     }
 }
