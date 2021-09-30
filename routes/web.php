@@ -39,5 +39,4 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
         Route::post('/delete-subPage', 'PageController@pageDeleteSubPage')->name('pageDeleteSubPage');
     });
 
-
 });
