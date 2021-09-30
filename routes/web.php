@@ -39,5 +39,11 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
         Route::post('/delete-subPage', 'PageController@pageDeleteSubPage')->name('pageDeleteSubPage');
     });
 
+    Route::prefix('/section')->group(function(){
+        Route::get('', 'SectionController@index')->name('section');
+        Route::get('/get-data', 'SectionController@sectionGetData')->name('sectionGetData');
+        Route::get('/add-data/{id}', 'SectionController@sectionAddData')->name('sectionAddData');
+        Route::post('/get-section-data', 'SectionController@sectionGetSectionData')->name('sectionGetSectionData');
+    });
 
 });

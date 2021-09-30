@@ -12,6 +12,10 @@
             @if (isset($delete))
                 <li><a data-link="{!! $delete !!}" class="delete-button"><i class="icon-x"></i>Delete</a></li>
             @endif
+
+            @if (isset($detail))
+                <li><a href="{!! $detail !!}" class="delete-button"><i class="icon-pencil5"></i>Detail</a></li>
+            @endif
         </ul>
     </li>
 </ul>
