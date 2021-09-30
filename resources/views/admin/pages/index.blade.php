@@ -2,7 +2,9 @@
 
 @section('title', 'Sidji')
 
-@section('breadcrumb', 'Page Management')
+@section('breadcrumb')
+    <li class="active">Page</li>
+@endsection
 
 @section('content')
 

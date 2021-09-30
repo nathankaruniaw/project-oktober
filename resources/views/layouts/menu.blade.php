@@ -15,7 +15,7 @@
     <a href="#"><i class="icon-crown"></i> <span>Page Controller</span></a>
     <ul>
         <li><a href="{{ route('page') }}"><i class="icon-crown"></i>Page</a></li>
-        <li><a href="#"><i class="icon-crown"></i>Section</a></li>
+        <li><a href="{{ route('section') }}"><i class="icon-crown"></i>Section</a></li>
     </ul>
 </li>
 

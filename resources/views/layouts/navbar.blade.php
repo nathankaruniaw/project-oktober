@@ -71,45 +71,6 @@
 								<li class="divider"></li>
 								<li><a href="#"><i class="icon-cog5"></i> <span>Account settings</span></a></li> --}}
                                 <li>
-                                    <a id="buttonModal" class="btn btn-info" data-toggle="modal" data-target="#modal"><i class="icon-plus2"></i>Best Pick</a>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade text-left" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg" role="dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="" id="modalLabel">Add to Best Pick</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <i class="icon-cross"></i>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-
-                                                    <div class="container-fluid">
-
-                                                        <table class="table table-striped">
-
-                                                            <thead>
-                                                                <th>No</th>
-                                                                <th>Kategori</th>
-                                                                <th>Sub Kategori</th>
-                                                                <th>Nama Barang</th>
-                                                                <th>Detail</th>
-                                                            </thead>
-
-                                                            <tbody id="tableAddBestPick">
-
-                                                            </tbody>
-
-                                                        </table>
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                </li>
-                                <li>
                                     <button class="btn btn-default" data-toggle="modal" data-target="#changePassword">
                                     Change Password
                                     </button>
@@ -209,55 +170,6 @@
 
     @yield('javascript')
 
-    <script>
-        function changePassword(){
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            })
-
-            let email = $('#email').val();
-            let password = $('#password').val();
-            let confirmPassword = $('#confirmPassword').val();
-
-            console.log(email);
-            console.log(password);
-            console.log(confirmPassword);
-
-            if (password != confirmPassword){
-                console.log('TIDAK SAMA')
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Password dan Confirm Password tidak sama!',
-                    timer: 500,
-                })
-            } else if (password == confirmPassword){
-                console.log('SAMA')
-                $.ajax({
-                    type: 'POST',
-                    url: '/admin/change-password',
-                    data: {
-                        email: email,
-                        password: password
-                    },
-                    success: function(data){
-                        console.log(data)
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'User Berhasil Ganti Password!',
-                            timer: 900,
-                        })
-                        location.reload()
-                    },
-                    error: function(data){
-                        console.log('Error ', data);
-                    }
-                })
-            }
-        }
-    </script>
 </body>
 
 </html>
