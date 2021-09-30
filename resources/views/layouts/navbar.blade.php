@@ -70,30 +70,7 @@
 								<li><a href="#"><i class="icon-comment-discussion"></i> <span><span class="badge bg-teal-400 pull-right">58</span> Messages</span></a></li>
 								<li class="divider"></li>
 								<li><a href="#"><i class="icon-cog5"></i> <span>Account settings</span></a></li> --}}
-                                <li>
-                                    <button class="btn btn-default" data-toggle="modal" data-target="#changePassword">
-                                    Change Password
-                                    </button>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="changePassword">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <!-- header-->
-                                                <div class="modal-header">
-                                                    <button class="close" data-dismiss="modal"><span>&times;</span></button>
-                                                    <h4 class="modal-title" id="myModalLabel">Change Password</h4>
-                                                </div>
-                                                <!--body-->
-                                                <div class="modal-body">
-                                                    <input type="text" id="email" value="{{ Auth::user()->name }}" hidden>
-                                                    <input type="password" name="password" id="password">
-                                                    <input type="password" name="confirmPassword" id="confirmPassword">
-                                                    <button type="button" class="btn btn-primary" onclick="changePassword()">Save changes</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+								<li><button id="changePassword">Open Modal</button></li>                                
                                 <li>
                                     <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();$('#logout-form').submit();">
@@ -108,6 +85,32 @@
                         </div>
                     </div>
                     <!-- /user menu -->
+
+                    <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl" style="width: 90%!important;">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Change Password</h5>
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <div class="modal-body">
+
+                                    <input type="hidden" id="emailUser" value="{{ Auth::user()->email }}">
+                                    <label for="password">Password</label>
+                                    <input type="password" id="password" name="password" class="form-control">
+                                    <label for="confirmPassword">Confirm Password</label>
+                                    <input type="password" id="confirmPassword" name="confirmPassword" class="form-control">
+                                    <button type="submit" onclick="changePassword()"></button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
                     <!-- Main navigation -->
@@ -169,6 +172,9 @@
     @yield('modal')
 
     @yield('javascript')
+
+    <script src="/js/admin/changePassword.js"></script>
+    
 
 </body>
 
