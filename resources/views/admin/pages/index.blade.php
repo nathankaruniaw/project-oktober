@@ -24,6 +24,14 @@
 
                 <div class="row">
 
+                    <button class="btn btn-tambah" type="button" id="addPage">
+                        Add Pages
+                    </button>
+
+                </div>
+
+                <div class="row">
+
                     <table class="table" id="tableData">
 
                         <thead>
@@ -50,7 +58,7 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h5 class="modal-title">Edit Pages</h5>
+                    <h5>Edit Pages :</h5>
 
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -85,6 +93,77 @@
                                 </div>
 
                             </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="AddModal" tabindex="-1" aria-labelledby="AddModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Pages :</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="container-fluid">
+
+                        <div class="row">
+
+                            <div class="col-lg-12">
+
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label>Page's Name : </label>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <input type="text" name="addNamaPage" id="addNamaPage" class="form-control" placeholder="Page's name">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-lg-12">
+
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label>Page's Status : </label>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="addStatusPage" id="addStatusPage">
+                                            <option value="Online" selected> Online</option>
+                                            <option value="Offline"> Offline</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row text-right">
+
+                            <button class="btn btn-tambah" id="btnTambahPage" type>
+                                Add
+                            </button>
 
                         </div>
 
