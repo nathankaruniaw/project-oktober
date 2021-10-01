@@ -43,9 +43,9 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
 
     Route::prefix('/section')->group(function(){
         Route::get('', 'SectionController@index')->name('section');
-        Route::get('/get-data', 'SectionController@sectionGetData')->name('sectionGetData');
         Route::get('/add-data/{id}', 'SectionController@sectionAddData')->name('sectionAddData');
         Route::post('/get-section-data', 'SectionController@sectionGetSectionData')->name('sectionGetSectionData');
+        Route::post('/update-section-data', 'SectionController@sectionUpdateSectionData')->name('sectionUpdateSectionData');
     });
 
 });

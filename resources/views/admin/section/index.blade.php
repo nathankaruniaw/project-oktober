@@ -30,11 +30,64 @@
 
                         <thead>
                             <th>No</th>
-                            <th>Status</th>
                             <th>Pages</th>
-                            <th>Sub Page</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </thead>
+
+                        <tbody>
+                            <?php $no=1; ?>
+                            @foreach($pages as $page)
+
+                                <?php $count=0; ?>
+                                @foreach($subPages as $subPage)
+
+                                    @if($page->idPage == $subPage->idSubPage)
+                                        <tr>
+                                            <td>{{ $no }}</td>
+                                            <td>{{ $page->namaPage }} - {{ $subPage->namaPage }}</td>
+                                            <td>{{ $subPage->statusPage }}</td>
+                                            <td>
+                                                <ul class="icons-list">
+                                                    <li class="dropdown">
+                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                            <i class="icon-menu9"></i>
+                                                        </a>
+                                                        <ul class="dropdown-menu dropdown-menu-right">
+                                                            <li><a href="/admin/section/add-data/{{ $subPage->idPage }}" class="edit-button"><i class="icon-pencil6"></i> Detail</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <?php $no++; $count++; ?>
+                                    @endif
+
+                                @endforeach
+
+                                @if($count == 0)
+                                    <tr>
+                                        <td>{{ $no }}</td>
+                                        <td>{{ $page->namaPage }}</td>
+                                        <td>{{ $page->statusPage }}</td>
+                                        <td>
+                                            <ul class="icons-list">
+                                                <li class="dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                        <i class="icon-menu9"></i>
+                                                    </a>
+                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                        <li><a href="/admin/section/add-data/{{ $page->idPage }}" class="edit-button"><i class="icon-pencil6"></i> Detail</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <?php $no++; ?>
+                                @endif
+
+                            @endforeach
+                        </tbody>
 
                     </table>
 

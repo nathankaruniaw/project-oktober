@@ -1,21 +1,22 @@
 body {
     margin: 0;
   }
-  
+
   .container {
-    background-color: #333;
-    padding: 1rem;
-    margin-top: 1rem;
+    background-color: rgb(209, 209, 209);
+    border-radius: 20px;
+    padding: 2rem;
   }
-  
+
   .draggable {
     padding: 1rem;
     background-color: white;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     cursor: move;
     border-radius: 20px;
+    margin-bottom: 5px;
   }
-  
+
   .draggable.dragging {
     opacity: 1;
   }

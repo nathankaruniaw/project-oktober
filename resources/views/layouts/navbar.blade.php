@@ -112,7 +112,7 @@
                     <div class="breadcrumb-line">
                         <ul class="breadcrumb">
                             <li><a href="/admin"><i class="icon-home2 position-left"></i> Home</a></li>
-                            <li class="active">@yield('breadcrumb')</li>
+                            @yield('breadcrumb')
                         </ul>
                     </div>
                 </div>
@@ -151,7 +151,7 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h5>Change Password</h5>
+                    <h5>Edit Pages :</h5>
 
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -219,5 +219,4 @@
     </script>
 
 </body>
-
 </html>

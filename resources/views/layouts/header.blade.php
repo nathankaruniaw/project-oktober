@@ -38,3 +38,5 @@
 
 {{-- CSS Sendiri --}}
     <link rel="stylesheet" href="/css/admin/admin.css">
+
+    <script src="{{ mix('/js/app.js') }}"></script>
