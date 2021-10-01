@@ -11,7 +11,8 @@ CREATE TABLE page(
 
 CREATE TABLE section(
     idSection INT PRIMARY KEY AUTO_INCREMENT,
-    namaSection VARCHAR(50)
+    namaSection VARCHAR(50),
+    namaFileSection VARCHAR(20)
 );
 
 CREATE TABLE pageSection(

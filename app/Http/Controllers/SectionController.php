@@ -1,62 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use DB;
 use Response;
 use Yajra\Datatables\Datatables;
-
 class SectionController extends Controller
 {
 
     public function index(){
 
-        return view('admin.section.index');
-    }
-
-    public function sectionGetData(){
-
-        // Sub Query dan aliases untuk pengambilan nama nya
-        $data = DB::table('page')
+        $pages = DB::table('page')
             ->where('idPage', DB::raw('idSubPage'))
             ->get();
 
-        return Datatables::of($data)
-            ->editColumn('subPage', function($data){
-                $subPages = DB::table('page')
-                ->where('idSubPage', $data->idPage)
-                ->where('idPage', '<>', $data->idPage)
-                ->get();
+        $subPages = DB::table('page')
+            ->where('idPage', '<>', DB::raw('idSubPage'))
+            ->get();
 
-                $counter = 0;
-                $output = '';
-
-                foreach($subPages as $subPage){
-                    if($counter == 0){
-                        $output .= $subPage->namaPage;
-                        $counter++;
-                    }
-                    elseif($counter <=2){
-                        $output .= ', '.$subPage->namaPage;
-                        $counter++;
-                    }
-                    elseif($counter == 3){
-                        $output .= ', ...';
-                        $counter++;
-                    }
-                }
-
-                return $output;
-
-            })
-            ->addColumn('action', function($data){
-                return view('admin._action', [
-                    'model' => $data,
-                    'detail' => route('sectionAddData',$data->idPage),
-                ]);
-            })
-            ->make(true);
+        return view('admin.section.index', compact('pages', 'subPages'));
     }
 
     public function sectionAddData($id){
@@ -82,5 +44,24 @@ class SectionController extends Controller
         $data = [$data, $section];
 
         return response()->json($data);
+    }
+
+    public function sectionUpdateSectionData(Request $request){
+
+        // dd($request);
+
+        $count = 1;
+        foreach($request->list as $list){
+            DB::table('pageSection')
+                ->updateOrInsert([
+                    'idSection' => $list,
+                    'idPage' => $request->idPage,
+                ],[
+                    'idSection' => $list,
+                    'idPage' => $request->idPage,
+                    'urutanPageSection' => $count
+                ]);
+            $count++;
+        }
     }
 }
