@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use Response;
 use DB;
+use Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -29,11 +31,13 @@ class AdminController extends Controller
             'email' => 'email'
         ]);
 
+        $password = Hash::make($request->password);
+
         DB::table('users')
             ->insert([
                 'name'=> $request->name,
                 'email'=> $request->email,
-                'password'=> $request->password,
+                'password'=> $password,
                 'role'=> $request->role
             ]);
 
@@ -43,12 +47,23 @@ class AdminController extends Controller
         return response()->json($data);
     }
 
-    public function changePassword(Request $request){
+    public function deleteUser(Request $request){
 
         DB::table('users')
-            ->where('email', $request->emailUser)
+            ->where('id', $request->id)
+            ->delete();
+
+        return response()->json();
+    }
+
+    public function changePassword(Request $request){
+
+        $password = Hash::make($request->password);
+
+        DB::table('users')
+            ->where('id', Auth::user()->id)
             ->update([
-                'password' => $request->password
+                'password' => $password
             ]);
 
         return response()->json();

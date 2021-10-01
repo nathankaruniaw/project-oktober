@@ -28,6 +28,7 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
     Route::get('/user-management', 'AdminController@userIndex');
     Route::post('/insert-user', 'AdminController@insertNewUser');
     Route::post('/change-pasword', 'AdminController@changePassword');
+    Route::post('/delete-user', 'AdminController@deleteUser');
 
     Route::prefix('/halaman')->group(function(){
         Route::get('', 'PageController@index')->name('page');

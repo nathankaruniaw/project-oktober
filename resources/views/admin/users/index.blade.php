@@ -43,8 +43,10 @@
                         <td>{{ $User->name }}</td>
                         <td>{{ $User->role }}</td>
                         <td>
-                            <button class="btn btn-danger" style="margin: 5px;" onclick="deleteAccount()">Delete!</button>
-                            <button class="btn btn-success" style="margin: 5px;" onclick="editAccount()">Edit!</button>
+                        @if(Auth::user()->role =='OWNER')         
+                            <button class="btn btn-danger" style="margin: 5px;" onclick="deleteAccount({{$User->id}})">Delete!</button>
+                            <button class="btn btn-success" style="margin: 5px;" onclick="editAccount({{$User->id}})">Edit!</button>
+                        @endif
                         </td>
                     </tr>
                 @endforeach
@@ -109,6 +111,30 @@
                     timer: 300,
                 })
             }
+        }
+
+        function deleteAccount(id){
+
+            $.ajax({
+                type: 'POST',
+                url: '/admin/delete-user',
+                data: {
+                    id: id
+                },
+                success: function(data) {
+                    console.log('Success :  ', data);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Delete User Berhasil!',
+                        timer: 900,
+                    });
+                    location.reload();
+                },
+                error: function(data){
+                    console.error('Error :  ', data);
+                }
+            })
+
         }
     </script>
 @endsection
