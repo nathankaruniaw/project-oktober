@@ -42,4 +42,15 @@ class AdminController extends Controller
 
         return response()->json($data);
     }
+
+    public function changePassword(Request $request){
+
+        DB::table('users')
+            ->where('email', $request->emailUser)
+            ->update([
+                'password' => $request->password
+            ]);
+
+        return response()->json();
+    }
 }

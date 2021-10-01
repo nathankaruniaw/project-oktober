@@ -151,7 +151,7 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h5>Edit Pages :</h5>
+                    <h5>Change Password</h5>
 
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -159,7 +159,14 @@
                 </div>
 
                 <div class="modal-body">
-
+                    
+                    <input type="hidden" name="emailUser" value="{{ Auth::user()->email }}">
+                    <label for="password">New Password</label>
+                    <input type="password" name="password" id="password" class="form-control">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" name="confirmPassword" id="confirmPassword" class="form-control">
+                    <button type="button" class="btn button-edit" onclick="changePassword()">Save</button>                                    
+            
                 </div>
 
             </div>
@@ -170,6 +177,50 @@
     @yield('javascript')
 
     <script src="/js/admin/changePassword.js"></script>
+<<<<<<< HEAD
+=======
+    <script>
+        function changePassword(){
+
+        let emailUser = $('#emailUser').val();
+        let password = $('#password').val();
+        let confirmPassword = $('#confirmPassword').val();
+        console.log('emailUser : ', emailUser);
+        console.log('password : ', password);
+        console.log('confirmPassword : ', confirmPassword);
+
+        if (password != confirmPassword){
+            Swal.fire({
+                icon: 'error',
+                title: 'Password tidak sama dengan Confirm Password!',
+                timer: 3000,
+            })
+        } else if (password == confirmPassword){
+
+            $.ajax({
+                type: 'POST',
+                url: '/admin/change-pasword',
+                data: {
+                    emailUser: emailUser,
+                    password: password
+                },
+                success: function(data) {
+                    console.log('Success :  ', data);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Password Berhasil Diganti!',
+                        timer: 900,
+                    })
+                    $('#changePasswordModal').modal('hide');
+                },
+                error: function(data){
+                    console.error('Error :  ', data);
+                }
+            })
+        }
+        }
+    </script>
+>>>>>>> 9f4295eaa2e697a1916f084939de47b555b10065
 
 </body>
 
