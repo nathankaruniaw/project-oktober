@@ -71,7 +71,7 @@
 								<li class="divider"></li>
 								<li><a href="#"><i class="icon-cog5"></i> <span>Account settings</span></a></li> --}}
 								<li>
-                                    <a id="changePassword" type="button">Open Modal</a>
+                                    <a id="changePassword" type="button">Change Password</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('logout') }}"

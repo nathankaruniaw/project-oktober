@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// User
+Route::get('/', 'DashboardController@dashboard');
+Route::get('/page/{halaman}', 'DashboardController@halaman');
 
 Auth::routes();
 
