@@ -13,4 +13,3 @@ require('./bootstrap');
  */
 
 require('./components/Example');
-Vue.component('example-component', require('./components/Example.vue').default);

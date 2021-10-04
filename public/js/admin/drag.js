@@ -115,7 +115,7 @@ $(document).ready(function () {
         containerSection.empty();
 
         for (let i = 0; i < data[1].length; i++) {
-          containerSection.append('<div class="row"><div class="col-lg-6"><label for="">' + data[1][i].namaSection + '</label></div><div class="col-lg-6 text-right"><button class="btn btn-edit" id="buttonAddSection">Add</button></div></div>');
+          containerSection.append('<div class="row"><div class="col-lg-6"><label for="">' + data[1][i].namaSection + '</label></div><div class="col-lg-6 text-right"><button class="btn btn-edit" id="buttonAddSection" data-id="' + data[1][i].idSection + '" data-nama="' + data[1][i].namaSection + '">Add</button></div></div>');
         }
       },
       error: function (data) {
@@ -126,8 +126,12 @@ $(document).ready(function () {
 
   $("body").on("click", "#buttonAddSection", function () {
     let containerChoosen = $("#containerChoosenSection");
+    let id= $(this).data('id');
+    let nama = $(this).data('nama');
     // containerChoosen.empty();
-    containerChoosen.append('<div class="draggable row" draggable="true" data-id=""><div class="col-lg-6"><label for="">Tes</label></div><div class="col-lg-6 text-right"><button class="btn btn-edit">Edit</button><button class="btn btn-edit">Hapus</button></div></div>');
+    containerChoosen.append('<div class="draggable row" draggable="true" data-id="'+ id +'"><div class="col-lg-6"><label for="">'+ nama +'</label></div><div class="col-lg-6 text-right"><button class="btn btn-edit" data-id="'+ id +'">Edit</button><button class="btn btn-edit" data-id="'+ id +'">Hapus</button></div></div>');
+
+    $("#containerButton").show();
   });
 
   getSection();

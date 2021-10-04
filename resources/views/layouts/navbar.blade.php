@@ -159,14 +159,14 @@
                 </div>
 
                 <div class="modal-body">
-                    
+
                     <input type="text" id="emailUser" value="{{ Auth::user()->email }}" hidden>
                     <label for="password">New Password</label>
                     <input type="password" name="password" id="password" class="form-control">
                     <label for="confirmPassword">Confirm Password</label>
                     <input type="password" name="confirmPassword" id="confirmPassword" class="form-control">
-                    <button type="button" class="btn button-edit" onclick="changePassword()">Save</button>                                    
-            
+                    <button type="button" class="btn button-edit" onclick="changePassword()">Save</button>
+
                 </div>
 
             </div>

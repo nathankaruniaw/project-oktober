@@ -22,6 +22,8 @@
 
         <div class="panel-body">
 
+            <div id="example"></div>
+
             <div class="container-fluid">
 
                 <div class="row">
@@ -104,4 +106,5 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
     <script src="/js/admin/section.js"></script>
+    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
 @endsection
