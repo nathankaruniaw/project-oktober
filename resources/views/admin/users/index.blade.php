@@ -1,12 +1,99 @@
 @extends('layouts.navbar')
 
-@section('title', 'Dashboard Odoroki Florist')
+@section('title', 'Sidji')
 
 @section('breadcrumb', 'Dashboard')
 
 @section('content')
 
-    <div class="container-fluid">
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h6 class="panel-title">Add User</h6>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li><a data-action="collapse"></a></li>
+                    {{-- <li><a data-action="reload"></a></li> --}}
+                    <li><a data-action="close"></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel-body">
+
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <label for="name">Nama</label>
+                        <input type="text" class="form-control" name="name" id="name"><br>
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" name="email" id="email"><br>
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" name="password" id="password"><br>
+                        <label for="role">Role</label>
+                        <select name="role" class="form-control" id="role">
+                            <option value="OWNER">Owner</option>
+                            <option value="ADMIN">Admin</option>
+                        </select><br>
+                        <button class="btn btn-tambah"type="button" onclick="addUser()">Add</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h6 class="panel-title">User Management</h6>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li><a data-action="collapse"></a></li>
+                    {{-- <li><a data-action="reload"></a></li> --}}
+                    <li><a data-action="close"></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel-body">
+
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <table id="example" class="display table table-striped" style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($Users as $User)
+                            <tr>
+                                <td>{{ $User->name }}</td>
+                                <td>{{ $User->role }}</td>
+                                <td>
+                                @if(Auth::user()->role =='OWNER')
+                                    <button class="btn btn-danger" style="margin: 5px;" onclick="deleteAccount({{$User->id}})">Delete!</button>
+                                    <button class="btn btn-success" style="margin: 5px;" onclick="editAccount({{$User->id}})">Edit!</button>
+                                @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {{-- <div class="container-fluid">
 
         <div class="row" style="background-color: #ffe291; border-radius: 10px; padding: 15px; margin-top:20px;">
 
@@ -43,7 +130,7 @@
                         <td>{{ $User->name }}</td>
                         <td>{{ $User->role }}</td>
                         <td>
-                        @if(Auth::user()->role =='OWNER')         
+                        @if(Auth::user()->role =='OWNER')
                             <button class="btn btn-danger" style="margin: 5px;" onclick="deleteAccount({{$User->id}})">Delete!</button>
                             <button class="btn btn-success" style="margin: 5px;" onclick="editAccount({{$User->id}})">Edit!</button>
                         @endif
@@ -55,7 +142,7 @@
 
         </div>
 
-    </div>
+    </div> --}}
 
 @endsection
 
